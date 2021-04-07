@@ -11,3 +11,5 @@ I select Target: module name and put in the module where my tests are (that is '
 I set the Python interpreter.
 
 I set the working directory to the project directory.
+
+Add argument like --browser chrome , --url https://xyz.com  to Additional Argument section [Pytest Edit]
