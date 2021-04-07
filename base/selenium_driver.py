@@ -23,8 +23,8 @@ class SeleniumDriver():
         """
         Takes screenshot of the current open web page
         """
-        fileName = resultMessage + "." + str(round(time.time() * 1000)) + ".png"
-        screenshotDirectory = "../screenshots/"
+        fileName = resultMessage  #+"." + str(round(time.time() * 1000)) + ".png"
+        screenshotDirectory = "../reports/"
         relativeFileName = screenshotDirectory + fileName
         currentDirectory = os.path.dirname(__file__)
         destinationFile = os.path.join(currentDirectory, relativeFileName)
@@ -102,6 +102,38 @@ class SeleniumDriver():
                 element = self.getElement(locator, locatorType)
             #self.waitForElement(locator)
             element.click()
+            self.log.info("Clicked on element with locator: " + locator +
+                          " locatorType: " + locatorType)
+        except:
+            self.log.info("Cannot click on the element with locator: " + locator +
+                          " locatorType: " + locatorType)
+            print_stack()
+
+    def elementClickJS(self, locator="", locatorType="id", element=None):
+        """
+        Click on an element -> MODIFIED
+        Either provide element or a combination of locator and locatorType
+        """
+        try:
+            if locator:  # This means if locator is not empty
+                element = self.getElement(locator, locatorType)
+            # self.waitForElement(locator)
+            #element.click()
+
+            userName = self.driver.find_element_by_xpath("//a[text()='Selenium Framework']")
+            #self.driver.execute_script("arguments[0].click();", userName)
+            self.driver.execute_script("arguments[0].style.border='3px solid red'", userName);
+
+            self.driver.execute_script("document.getElementById('social_block').remove()")  #only remove by id
+
+            self.driver.execute_script("document.getElementsByClassName('header-container')[0].remove()")  #with class in class nae
+
+            #self.driver.execute_script("document.querySelectorAll('.header-container')[0].remove()") # with query selector
+            #self.driver.execute_script()
+
+            #document.querySelectorAll('.header-container')[0].setAttribute('style', 'background-color: green')");   add new attribute to html
+            #document.getElementById('social_block').setAttribute('name','test')
+
             self.log.info("Clicked on element with locator: " + locator +
                           " locatorType: " + locatorType)
         except:
