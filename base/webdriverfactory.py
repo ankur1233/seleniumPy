@@ -49,12 +49,12 @@ class WebDriverFactory():
             driver = webdriver.Firefox()
         elif self.browser == "chrome":
             # Set chrome driver
-            chromedriver = "G:\\KotakAutomation_07\\drivers\\chromedriver.exe"
+            chromedriver = "/Users/kotakcherry/PythonProjest/seleniumPy/chromedriver"
             os.environ["webdriver.chrome.driver"] = chromedriver
             driver = webdriver.Chrome(chromedriver)
             driver.set_window_size(1440, 900)
         else:
-            chromedriver = "G:\\KotakAutomation_07\\drivers\\chromedriver.exe"
+            chromedriver = "/Users/kotakcherry/PythonProjest/seleniumPy/chromedriver"
             os.environ["webdriver.chrome.driver"] = chromedriver
             driver = webdriver.Chrome(chromedriver)
             driver.set_window_size(1440, 900)

@@ -1,7 +1,16 @@
 # seleniumPy
 
 ##Run using CLI 
+
+report 1: pytest-html
 pytest tests\myStore\test_checkout_product.py --browser chrome --url http://automationpractice.com/index.php --html=reports/report.html
+
+report 2 : pytest-html1 .. edit index.html to stop warning 
+pytest test_checkout_product.py --browser chrome --url http://automationpractice.com/index.php --template=html1/index.html --report=./report/report.html
+
+report 3: pytest-html-reporter
+pytest test_checkout_product.py --browser chrome --url http://automationpractice.com/index.php --html-report=./report/report.html
+
 
 ## Run on Pycharm 
 I do Run -> Edit Configurations... Then click the + in the upper left of the modal dialog. Select "python tests" -> py.test Then I give it a name like "All test with py.test"
